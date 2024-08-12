@@ -9,7 +9,7 @@ const Register: React.FC = () => {
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://minesweeper-firts-prjct-a4kqjtl0b-ksanoxs-projects.vercel.app/register", {
+      const res = await axios.post(`${process.env.HOST}/api/register`, {
         username,
         password,
       });

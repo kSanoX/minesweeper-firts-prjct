@@ -4,19 +4,13 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const gameResultsRouter = require('./routes/gameResults');
 
-const corsOptions = {
-  origin: 'minesweeper-firts-prjct.vercel.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-};
-
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors());
 
 // Подключение к MongoDB
 mongoose.connect(process.env.MONGO_URI, {
