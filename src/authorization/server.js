@@ -2,6 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const gameResultsRouter = require('./routes/gameResults');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 
 const allowedOrigins = [process.env.HOST, 'http://localhost:3000'];
