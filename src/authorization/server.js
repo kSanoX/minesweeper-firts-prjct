@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
-app.use(cors({ origin: '*' })); // Разрешить запросы с любого источника
+app.use(cors());
 
 // Подключение к MongoDB
 mongoose.connect(process.env.MONGO_URI, {
