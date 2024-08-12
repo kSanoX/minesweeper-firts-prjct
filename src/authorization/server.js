@@ -1,21 +1,21 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 const cors = require('cors');
 const gameResultsRouter = require('./routes/gameResults');
-const dotenv = require('dotenv').config();
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const allowedOrigins = [
   'https://minesweeper-firts-prjct.vercel.app',
-  'https://minesweeper-firts-prjct-q6cokvmzc-ksanoxs-projects.vercel.app',
   'http://localhost:3000'
 ];
 
 app.use(express.json());
 app.use(cors({
-  origin: function(origin, callback){
-    // Разрешаем запросы с указанных origin
+  origin: function (origin, callback) {
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       return callback(null, true);
     }
