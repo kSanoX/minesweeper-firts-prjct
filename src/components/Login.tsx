@@ -9,6 +9,8 @@ const Login: React.FC = () => {
   const [message, setMessage] = useState<string>('');
   const { setAuth, setUsername: setAuthUsername } = useAuth();
   const navigate = useNavigate();
+  const dotenv = require('dotenv');
+dotenv.config();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();

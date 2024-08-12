@@ -21,6 +21,8 @@ const Game: React.FC<GameProps> = ({ difficulty }) => {
   const [showMines, setShowMines] = useState(false);
   const [notificationMessage, setNotificationMessage] = useState<string | null>(null);
   const { username } = useAuth();
+  const dotenv = require('dotenv');
+dotenv.config();
 
   const init = (rows: number, cols: number, mines: number) => {
     let squares = createBoard(rows, cols);

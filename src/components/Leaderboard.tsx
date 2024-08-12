@@ -3,12 +3,17 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 interface GameResult {
   username: string;
   time: number;
   difficulty: string;
   date: string;
 }
+
+
 
 const Leaderboard: React.FC = () => {
   const [easyResults, setEasyResults] = useState<GameResult[]>([]);
