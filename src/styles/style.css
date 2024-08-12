@@ -1,0 +1,348 @@
+@font-face {
+  font-family: 'Minesweeper-text';
+  src: url('/src/fonts/mine-sweeper.ttf') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.App {
+  font-family: "Minesweeper-text";
+  font-size: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.row {
+  display: flex;
+}
+.square {
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  border-top: 3px solid #fff;
+  border-left: 3px solid #fff;
+  border-bottom: 3px solid #777;
+  border-right: 3px solid #777;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Minesweeper-text";
+  font-weight: bold;
+}
+.square--revealed {
+  border: 1px solid #777;
+}
+.square--revealed[data-value="1"] {
+  color: #0000ff;
+}
+.square--revealed[data-value="2"] {
+  color: #027b00;
+}
+.square--revealed[data-value="3"] {
+  color: #ff0000;
+}
+.square--revealed[data-value="4"] {
+  color: #00007b;
+}
+.square--revealed[data-value="5"] {
+  color: #00007b;
+}
+.square--revealed[data-value="6"] {
+  color: #00007b;
+}
+.square--revealed[data-value="7"] {
+  color: #000000;
+}
+.square--revealed[data-value="8"] {
+  color: #7b7b7b;
+}
+
+.square.show-bomb {
+  background-color: #ff0000; /* Цвет фона для бомб */
+}
+
+.square.show-bomb::before {
+  content: '💣'; /* Emoji для бомбы */
+  font-size: 20px; /* Размер шрифта */
+  color: #ffffff; /* Цвет текста */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  width: 80%;
+  max-width: 500px; 
+  padding: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.modal-header {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.modal-button {
+  background: #3c0064;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 14px;
+  margin: 5px;
+}
+
+.select-container {
+  position: relative;
+  display: inline-block;
+}
+
+select {
+  appearance: none;
+  background: #dfcdff; 
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 18px; 
+  color: #333;
+  cursor: pointer; 
+  transition: border-color 0.3s, background-color 0.3s;
+  text-align: center;
+  width: 50%; 
+}
+
+select:hover {
+  border-color: #3c0064;
+}
+
+select:focus {
+  outline: none; 
+  border-color: #003CC5;
+  background-color: #f9f9f9;
+}
+
+.select-container::after {
+  content: '▼'; 
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #333;
+  pointer-events: none; 
+}
+
+
+.modal-button:hover {
+  background: #34006e;
+}
+
+.modal-button.close {
+  background: #ccc;
+  color: #333;
+}
+
+.modal-button.close:hover {
+  background: #aaa;
+}
+
+
+.notification-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.notification-modal__content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.notification-modal__content button {
+  background: #aaa;
+  border-radius: 8px;
+  border: none;
+  padding: 5px;
+  width: 50px;
+  height: 30px;
+}
+
+.notification-modal__content p{
+  font-family:"Open Sans", sans-serif, bold;
+  font-size: 16px;
+}
+
+.user-menu {
+  position: relative;
+  display: inline-block;
+  margin-left: 30px;
+  font-family: "Open Sans", sans-serif, bold;
+  font-size: 16px;
+}
+
+.user-menu span {
+  cursor: pointer;
+  padding: 8px 16px;
+  background: #bbdbff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.user-menu-dropdown {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: #6fb1fc;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 4px;
+  padding: 8px 0;
+}
+
+.user-menu-dropdown button {
+  background: none;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.user-menu-dropdown button:hover {
+  background-color: #0065fd;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+#root {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 120px;
+}
+
+.text-field {
+  margin-bottom: 1rem;
+}
+
+.text-field__label {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.text-field__input {
+  display: block;
+  width: 100%;
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #14d87d;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-new {
+  font-family: "Open Sans", sans-serif, bold;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  width: 120px;
+  height: 30px;
+  background-color: #fff;
+  box-shadow: 0 3px 10px 0 rgb(236, 216, 255);
+  transition: 0.5s;
+}
+
+.btn-new:hover {
+  transform: translate(0,-3px);
+  box-shadow: 0 10px 20px 0 rgb(77, 0, 177);
+}
+
+form {
+  width: 350px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  margin-right: 30px;
+  height: 25px;
+  width: auto;
+  font-size: 12px;
+  text-decoration: none;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #e1b9ff;
+  border-radius: 10px;
+  background-image: linear-gradient(to right, #3c0064 0%, #34006e 51%, #003CC5 100%);
+  padding: 10px;
+}
+
+.nav-link:hover {
+  background-position: right center;
+}
+
+.time {
+  font-family: "Open Sans", sans-serif, bold;
+  font-size: 16px;
+  font-weight: 600;
+}
