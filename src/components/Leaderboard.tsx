@@ -1,6 +1,7 @@
+// src/components/Leaderboard.tsx
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
 
 interface GameResult {
   username: string;
@@ -8,8 +9,6 @@ interface GameResult {
   difficulty: string;
   date: string;
 }
-
-
 
 const Leaderboard: React.FC = () => {
   const [easyResults, setEasyResults] = useState<GameResult[]>([]);
@@ -19,7 +18,7 @@ const Leaderboard: React.FC = () => {
   useEffect(() => {
     const fetchResults = async () => {
       try {
-        const response = await axios.get(`${process.env.HOST}/api/game-results`);
+        const response = await axios.get(`${process.env.REACT_APP_HOST}/api/game-results`);
         setEasyResults(response.data.easyResults);
         setMediumResults(response.data.mediumResults);
         setHardResults(response.data.hardResults);
@@ -41,7 +40,7 @@ const Leaderboard: React.FC = () => {
           <tr>
             <th>Username</th>
             <th>Time (s)</th>
-            <th>Date</th>
+            <th>Date</th> 
           </tr>
         </thead>
         <tbody>
