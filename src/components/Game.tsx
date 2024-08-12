@@ -5,10 +5,13 @@ import { createBoard, randomizeMines, getMinesAround } from '../utils/helper';
 import NotificationModal from './NotificationModal';
 import axios from 'axios';
 import { useAuth } from './AuthContext';
+import dotenv from 'dotenv';
 
 interface GameProps {
   difficulty: string;
 }
+
+dotenv.config();
 
 const Game: React.FC<GameProps> = ({ difficulty }) => {
   const [squares, setSquares] = useState<TSquare[][]>([]);
@@ -21,8 +24,6 @@ const Game: React.FC<GameProps> = ({ difficulty }) => {
   const [showMines, setShowMines] = useState(false);
   const [notificationMessage, setNotificationMessage] = useState<string | null>(null);
   const { username } = useAuth();
-  const dotenv = require('dotenv');
-dotenv.config();
 
   const init = (rows: number, cols: number, mines: number) => {
     let squares = createBoard(rows, cols);

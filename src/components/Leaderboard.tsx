@@ -1,9 +1,7 @@
-// src/components/Leaderboard.tsx
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import dotenv from 'dotenv';
 
-const dotenv = require('dotenv');
 dotenv.config();
 
 interface GameResult {

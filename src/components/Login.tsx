@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useAuth } from './AuthContext';
 import { useNavigate } from 'react-router-dom';
+import dotenv from 'dotenv';
+
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>('');
@@ -9,7 +11,7 @@ const Login: React.FC = () => {
   const [message, setMessage] = useState<string>('');
   const { setAuth, setUsername: setAuthUsername } = useAuth();
   const navigate = useNavigate();
-  const dotenv = require('dotenv');
+
 dotenv.config();
 
   const handleLogin = async (e: React.FormEvent) => {
