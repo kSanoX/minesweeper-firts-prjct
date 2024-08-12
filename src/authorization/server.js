@@ -6,9 +6,22 @@ const dotenv = require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const allowedOrigins = [
+  'https://minesweeper-firts-prjct.vercel.app',
+  'https://minesweeper-firts-prjct-q6cokvmzc-ksanoxs-projects.vercel.app',
+  'http://localhost:3000'
+];
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: function(origin, callback){
+    // Разрешаем запросы с указанных origin
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  }
+}));
 
 // Подключение к MongoDB
 mongoose.connect(process.env.MONGO_URI, {
