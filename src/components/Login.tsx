@@ -13,7 +13,7 @@ const Login: React.FC = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${process.env.REACT_APP_HOST}/api/auth/login`, { username, password });
+      const res = await axios.post(`https://minesweeper-firts-prjct.vercel.app/api/auth/login`, { username, password });
       localStorage.setItem('token', res.data.token);
       setAuth(true);
       setAuthUsername(username); // Устанавливаем имя пользователя
