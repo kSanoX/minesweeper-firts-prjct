@@ -67,7 +67,7 @@ const Game: React.FC<GameProps> = ({ difficulty }) => {
 
   const saveGameResult = async (username: string, time: number, difficulty: string) => {
     try {
-      await axios.post(`${process.env.REACT_APP_HOST}/api/game-results`, {
+      await axios.post(`/api/game-results`, {
         username,
         time,
         difficulty
