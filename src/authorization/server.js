@@ -5,17 +5,13 @@ const cors = require('cors');
 const gameResultsRouter = require('./routes/gameResults');
 
 dotenv.config();
+
 const app = express();
 const PORT = process.env.PORT || 5000;
-const corsOptions = {
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
-};
 
-app.use(cors(corsOptions));
 app.use(express.json());
+app.use(cors({ origin: '*' })); // Разрешить запросы с любого источника
+
 // Подключение к MongoDB
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
