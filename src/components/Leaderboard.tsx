@@ -18,7 +18,7 @@ const Leaderboard: React.FC = () => {
   useEffect(() => {
     const fetchResults = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/game-results');
+        const response = await axios.get(`${process.env.HOST}/api/game-results`);
         setEasyResults(response.data.easyResults);
         setMediumResults(response.data.mediumResults);
         setHardResults(response.data.hardResults);
