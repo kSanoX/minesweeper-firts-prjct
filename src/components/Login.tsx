@@ -3,8 +3,6 @@ import axios from 'axios';
 import { useAuth } from './AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-
-
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -12,11 +10,9 @@ const Login: React.FC = () => {
   const { setAuth, setUsername: setAuthUsername } = useAuth();
   const navigate = useNavigate();
 
-
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      console.log(process.env.REACT_APP_HOST);
       const res = await axios.post(`${process.env.REACT_APP_HOST}/api/auth/login`, { username, password });
       localStorage.setItem('token', res.data.token);
       setAuth(true);

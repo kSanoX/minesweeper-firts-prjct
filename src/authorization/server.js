@@ -4,16 +4,11 @@ const cors = require('cors');
 const gameResultsRouter = require('./routes/gameResults');
 const dotenv = require('dotenv').config();
 
-
-const allowedOrigins = [process.env.REACT_APP_HOST, 'http://localhost:3000'];
-
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
-app.use(cors({
-  origin: allowedOrigins,
-}));
+app.use(cors());
 
 // Подключение к MongoDB
 mongoose.connect(process.env.MONGO_URI, {
