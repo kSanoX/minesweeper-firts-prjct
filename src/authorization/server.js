@@ -1,10 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
 const cors = require('cors');
 const gameResultsRouter = require('./routes/gameResults');
 
-dotenv.config();
 
 const allowedOrigins = [process.env.HOST, 'http://localhost:3000'];
 
