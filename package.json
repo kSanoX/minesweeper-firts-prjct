@@ -30,6 +30,7 @@
     "@types/react-dom": "^18.2.15",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.7.3",
+    "gh-pages": "^6.1.1",
     "typescript": "^4.4.4"
   },
   "scripts": {
@@ -37,7 +38,10 @@
     "build": "react-scripts build",
     "dev": "nodemon src/authorization/server.js",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "homepage": "https://kSanOx.github.io/minesweeper-firts-prjct"
   },
   "browserslist": [
     ">0.2%",
